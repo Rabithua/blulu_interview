@@ -1,0 +1,16 @@
+npmName: "api-client"
+npmVersion: "1.0.0"
+inputSpec: "./openapi.yml"
+generatorName: "typescript-fetch"
+usePromise: true
+snapshot: false
+supportsES6: false
+typescriptThreePlus: true
+legacyDiscriminatorBehavior: false
+withoutRuntimeChecks: true
+withSeperateModelAndApi: true
+apiPackages: "apis"
+modelPackage: "models"
+modelPropertyNaming: "original"
+outputDir: "./build/api-client"
+

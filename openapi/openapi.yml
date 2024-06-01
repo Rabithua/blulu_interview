@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: interview api
+  version: 1.0.0
+servers:
+  - url: /api
+paths:
+  /user/send_mail:
+    post:
+      summary: 生成登录token
+      operationId: getUserToken
+      tags:
+        - user
+      requestBody:
+        $ref: '#/components/requestBodies/get_user_token_request'
+      responses:
+        '200':
+          $ref: '#/components/responses/user_token_response'
+components:
+  responses:
+    success:
+      description: success response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                example: 200
+              message:
+                type: string
+                example: OK
+    user_token_response:
+      description: user token response
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - $ref: '#/components/schemas/response'
+              - properties:
+                  data:
+                    type: string
+                    description: success
+  requestBodies:
+    get_user_token_request:
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - email
+            properties:
+              code:
+                description: code
+                type: string
+              email:
+                description: email
+                type: string
+  schemas:
+    response:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 200
+        message:
+          type: string
+          example: OK
+        data:
+          type: object
